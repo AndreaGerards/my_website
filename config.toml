@@ -94,20 +94,20 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "Who am I?"
       subtitle = "My background"
-      image = "projects/who/picwho.jpg"
-      url = "blogs/whoami"
+      image = "projects/project0/picwho.jpg"
+      url = "blogs/project0"
     
     [[params.tiles.showcase]]
       title = "Weather"
       subtitle = "Analysing statistical weather changes"
       image = "projects/project1/pic01.jpg"
-      url = "projects/weather"
+      url = "projects/project1"
 
     [[params.tiles.showcase]]
       title = "United Nations"
       subtitle = "Analysis of voting within the UN"
       image = "projects/project2/pic02.jpg"
-      url = "projects/un"
+      url = "projects/project2"
 
     [[params.tiles.showcase]]
       title = "Magna"
