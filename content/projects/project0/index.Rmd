@@ -19,10 +19,6 @@ library(gapminder)  # gapminder dataset
 library(here)
 ```
 
-> Please delete all the intro tet I wrote from line 22 to line 69 and start writing your short biography after this blockquote.
-
-# Task 1: Short biography written using markdown
-
 ## Origins
 My name is Andrea Gerards and I am half German and half Italian. I grew up in **Italy**, in a city close to the Austrian border called **Bolzano**. I have played [Basketball](https://www.altoadige.it/sport/piani-l-under-15-si-laurea-campione-del-triveneto-1.413004) for over a decade but always used  to practice other activities including tennis, football, volleyball and golf. 
 
@@ -30,6 +26,6 @@ My name is Andrea Gerards and I am half German and half Italian. I grew up in **
 I have attended a high school in scientific studies in Bolzano. My passion for economic matters led me then to join *Bocconi* in Milan for my Bachelor's and I am now happy to be part of the *LBS* community. 
 
 ## Professional experiences
-I have gained experience through a number of internships. My completed internships at **Deloitte**, **Macquarie**, **PAI** and **Credit Suisse** allowed me to get a unique insight in the fascinating financial sector.
+I have gained experience through a number of internships. My completed internships at **Deloitte**, **Macquarie**, **PAI Partners** and **Credit Suisse** allowed me to get a unique insight in the fascinating financial sector.
 
 ![Credit Suisse office in Canary Wharf](https://c8.alamy.com/comp/BXBN6D/the-swiss-bank-credit-suisse-in-canary-wharf-london-england-united-BXBN6D.jpg)

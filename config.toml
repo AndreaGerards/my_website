@@ -95,7 +95,7 @@ disqusShortname = ""
       title = "Who am I?"
       subtitle = "My background"
       image = "projects/project0/picwho.jpg"
-      url = "blogs/project0"
+      url = "projects/project0"
     
     [[params.tiles.showcase]]
       title = "Weather"
