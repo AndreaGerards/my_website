@@ -101,7 +101,7 @@ disqusShortname = ""
       title = "United Nations"
       subtitle = "Analysis of voting within the UN"
       image = "pic02.jpg"
-      url = "projects/project1"
+      url = "projects/project2"
 
     [[params.tiles.showcase]]
       title = "Magna"
