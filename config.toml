@@ -94,13 +94,13 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "Weather"
       subtitle = "Analysing statistical weather changes"
-      image = "projects/pic01.jpg"
+      image = "projects/project1/pic01.jpg"
       url = "projects/project1"
 
     [[params.tiles.showcase]]
       title = "United Nations"
       subtitle = "Analysis of voting within the UN"
-      image = "projects/pic02.jpg"
+      image = "projects/project2/pic02.jpg"
       url = "projects/project2"
 
     [[params.tiles.showcase]]
