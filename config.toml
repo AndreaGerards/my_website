@@ -98,10 +98,10 @@ disqusShortname = ""
       url = "projects/project1"
 
     [[params.tiles.showcase]]
-      title = "Tempus"
-      subtitle = "Feugiat Amet Tempus"
+      title = "United Nations"
+      subtitle = "Analysis of voting within the UN"
       image = "pic02.jpg"
-      url = "blogs/tempus"
+      url = "projects/project1"
 
     [[params.tiles.showcase]]
       title = "Magna"
