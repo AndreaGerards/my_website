@@ -81,7 +81,7 @@ disqusShortname = ""
   [params.banner]
     # To change the background image on the homepage banner, replace 'banner.jpg' in
     # the 'static/img' folder.
-    title = "Hi, my name is Andrea Gerards"
+    title = "Hi, my name is Andrea Gerards and welcome to my website!"
     subtitle = "I am a half Italian and half German student from LBS. I grew up in Bolzano, South Tyrol, surrounded by the beatiful dolomites mountains"
     buttonText = "Get Started"
 
@@ -105,7 +105,7 @@ disqusShortname = ""
 
     [[params.tiles.showcase]]
       title = "United Nations"
-      subtitle = "Analysis of voting within the UN"
+      subtitle = "Analysing country votings within the UN"
       image = "projects/project2/pic02.jpg"
       url = "projects/project2"
 
