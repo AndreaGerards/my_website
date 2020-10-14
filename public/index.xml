@@ -74,5 +74,15 @@ You can embed an R code chunk like this:
 summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
     </item>
     
+    <item>
+      <title>Who am I?</title>
+      <link>/projects/project0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/project0/</guid>
+      <description>Please delete all the intro tet I wrote from line 22 to line 69 and start writing your short biography after this blockquote.
+Task 1: Short biography written using markdownOriginsMy name is Andrea Gerards and I am half German and half Italian. I grew up in Italy, in a city close to the Austrian border called Bolzano. I have played Basketball for over a decade but always used to practice other activities including tennis, football, volleyball and golf.</description>
+    </item>
+    
   </channel>
 </rss>

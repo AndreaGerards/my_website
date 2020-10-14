@@ -27,5 +27,15 @@ weather &amp;lt;- read_csv(&amp;quot;https://data.giss.nasa.gov/gistemp/tabledat
 DataThe unvotes package provides three datasets I can work with: un_roll_calls,un_roll_call_issues, and un_votes. Each of these datasets contains avariable called rcid, the roll call id, which can be used as a uniqueidentifier to join them with each other.</description>
     </item>
     
+    <item>
+      <title>Who am I?</title>
+      <link>/projects/project0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/project0/</guid>
+      <description>Please delete all the intro tet I wrote from line 22 to line 69 and start writing your short biography after this blockquote.
+Task 1: Short biography written using markdownOriginsMy name is Andrea Gerards and I am half German and half Italian. I grew up in Italy, in a city close to the Austrian border called Bolzano. I have played Basketball for over a decade but always used to practice other activities including tennis, football, volleyball and golf.</description>
+    </item>
+    
   </channel>
 </rss>
