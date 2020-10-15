@@ -8,23 +8,22 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 15 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Analysis on Northern Hemishpere temperature</title>
+      <link>/projects/project1/</link>
+      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/project1/</guid>
+      <description>Climate change and temperature anomaliesWhen researching global climate changes and temperature data, you will often read about the “temperature anomaly.” That is the difference between the long-term average temperature (sometimes called a reference value) and the temperature that is actually occurring. In other words, the long-term average temperature is one that would be expected; the anomaly is the difference between what you would expect and what is happening.</description>
+    </item>
+    
+    <item>
       <title>NYT Mask Use Acceptance</title>
       <link>/projects/project3/</link>
       <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>/projects/project3/</guid>
-      <description>NYT mask useGithub source for data https://github.com/nytimes/covid-19-data/tree/master/mask-use
-Getting the data#Source for data url &amp;lt;- &amp;quot;https://github.com/nytimes/covid-19-data/raw/master/mask-use/mask-use-by-county.csv&amp;quot;nyt_mask_survey &amp;lt;- read_csv(here::here(&amp;quot;data&amp;quot;, &amp;quot;nyt_mask_survey.csv&amp;quot;))nyt_mask_survey &amp;lt;- nyt_mask_survey %&amp;gt;%clean_names() %&amp;gt;% mutate(mostly_yes= frequently+always,mostly_no = never+rarely,delta = mostly_yes-mostly_no)glimpse(nyt_mask_survey)## Rows: 3,142## Columns: 9## $ countyfp &amp;lt;chr&amp;gt; &amp;quot;01001&amp;quot;, &amp;quot;01003&amp;quot;, &amp;quot;01005&amp;quot;, &amp;quot;01007&amp;quot;, &amp;quot;01009&amp;quot;, &amp;quot;01011&amp;quot;, &amp;quot;0...## $ never &amp;lt;dbl&amp;gt; 0.053, 0.083, 0.067, 0.020, 0.053, 0.031, 0.102, 0.152, ...## $ rarely &amp;lt;dbl&amp;gt; 0.</description>
-    </item>
-    
-    <item>
-      <title>Analysis on Northern Hemishpere temperature</title>
-      <link>/projects/project1/</link>
-      <pubDate>Wed, 14 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/project1/</guid>
-      <description>Climate change and temperature anomaliesThe aim of this project was to define temperature anomalies within the Northern Hemisphere considering as a base period the one between 1951 and 1980. In order to carry out my observations, I have utilized data provided by the NASA’s Goddard Institute for Space Studies.
-weather &amp;lt;- read_csv(&amp;quot;https://data.giss.nasa.gov/gistemp/tabledata_v3/NH.Ts+dSST.csv&amp;quot;, skip = 1, na = &amp;quot;***&amp;quot;)tidyweather &amp;lt;- weather %&amp;gt;%select(Year:Dec) %&amp;gt;% pivot_longer(cols=c(&amp;#39;Jan&amp;#39;:&amp;#39;Dec&amp;#39;),names_to=&amp;quot;Month&amp;quot;,values_to=&amp;quot;delta&amp;quot;)PlotsI have plotted the data using a time-series scatter plot, and adding a trendline.</description>
+      <description>IntroductionIn some American neighborhoods, it’s hard to spot even one person outside without a face covering. In others, the odds of seeing many maskless people are quite high.
+Public health officials believe that face coverings can substantially slow transmission of the coronavirus, which is spreading rapidly in many states. But face coverings work best if they are adopted widely, and that is not the case everywhere. The accompanying map shows the odds of whether, if you encountered five people in a given area, all of them would be wearing masks.</description>
     </item>
     
     <item>

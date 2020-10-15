@@ -44,14 +44,16 @@ library(socviz)
 ```
 
 
-## NYT mask use
+## Introduction 
 
-Github source for data https://github.com/nytimes/covid-19-data/tree/master/mask-use
+In some American neighborhoods, it’s hard to spot even one person outside without a face covering. In others, the odds of seeing many maskless people are quite high.
+
+Public health officials believe that face coverings can substantially slow transmission of the coronavirus, which is spreading rapidly in many states. But face coverings work best if they are adopted widely, and that is not the case everywhere. The accompanying map shows the odds of whether, if you encountered five people in a given area, all of them would be wearing masks.
+
+In this analysis, the data comes from a large number of interviews conducted by the global data and survey firm Dynata at the request of The New York Times. The firm asked a question about mask use to obtain 250,000 survey responses between July 2 and July 14, enough data to provide estimates more detailed than the state level. (Several states have imposed new mask requirements since the completion of these interviews.)
 
 
-## Getting the data 
-
-```{r, read_data}
+```{r include=FALSE}
 #Source for data url <- "https://github.com/nytimes/covid-19-data/raw/master/mask-use/mask-use-by-county.csv"
 
 nyt_mask_survey <- read_csv(here::here("data", "nyt_mask_survey.csv"))
@@ -71,9 +73,9 @@ glimpse(nyt_mask_survey)
 
 The FIPS code is a federal code that numbers states and territories of the US. It extends to the county level with an additional four digits, so every county in the US has a unique six-digit identifier, where the first two digits represent the state. 
 
-We will be using Kieran Healy's `socviz` package which among other things contains `county_map` and `county_data`  
+I have used Kieran Healy's `socviz` package which among other things contains `county_map` and `county_data`  
 
-```{r}
+```{r include=FALSE}
 # America’s choropleths; use county_map that has all polygons 
 # and county data with demographics/election data from socviz datafile
 # The id field is the FIPS code for the county
@@ -95,17 +97,9 @@ glimpse(county_map)
 
 ```
 
-## Joing the files
-
-We have three files
-
-1. `nyt_mask_survey`, our NYT survey data, 
-1. `county_map` that has all polygons that define a county
-1. `county_data` with demographics/election data.
 
 
-
-```{r, join_data}
+```{r include=FALSE}
 
 
 county_full <- left_join(county_map, county_data, by = "id")
@@ -114,9 +108,10 @@ county_masks_full <- left_join(county_full, nyt_mask_survey,
                                 by = c("id"="countyfp"))
 ```
 
-## Building our choropleth plot
 
-```{r, plot_choropleths, cache=TRUE}
+## Building the choropleth plot
+
+```{r echo=FALSE, plot_choropleths, cache=TRUE}
 p <- ggplot(data = county_masks_full,
             mapping = aes(x = long, y = lat,
                           fill = delta, 
@@ -133,11 +128,15 @@ p + labs(fill = "Mask acceptance, (Mostly Yes - Mostly No)",
 
 ```
 
+The map shows broad regional patterns: Mask use is high in the Northeast and the West, and lower in the Plains and parts of the South. But it also shows many fine-grained local differences. Masks are widely worn in the District of Columbia, but there are sections of the suburbs in both Maryland and Virginia where norms seem to be different. In St. Louis and its western suburbs, mask use seems to be high. But across the Missouri River, it falls.
+
+
+
 ## Checking for relationships
 
-Does mask use acceptance have any relation with some demographics? Let us explor the relationship between country household income, population, and % who voted republican in 2016
+Does mask use acceptance have any relation with some demographics? Let's explore the relationship between country household income, population, and % who voted republican in 2016
 
-```{r, ggpairs, cache=TRUE}
+```{r echo=FALSE, ggpairs, cache=TRUE}
 county_masks_full %>% 
   select(hh_income, pop, per_gop_2016, delta) %>% 
   GGally::ggpairs()+

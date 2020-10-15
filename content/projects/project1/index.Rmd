@@ -48,11 +48,14 @@ library(vroom)
 
 # Climate change and temperature anomalies 
 
+When researching global climate changes and temperature data, you will often read about the “temperature anomaly.” That is the difference between the long-term average temperature (sometimes called a reference value) and the temperature that is actually occurring. In other words, the long-term average temperature is one that would be expected; the anomaly is the difference between what you would expect and what is happening.
 
-The aim of this project was to define temperature anomalies within the Northern Hemisphere considering as a base period the one between 1951 and 1980. In order to carry out my observations, I have utilized data provided by the NASA's Goddard Institute for Space Studies.  
+A positive anomaly means that the temperature was warmer than normal; a negative anomaly indicates that the temperature was cooler than normal.
+
+The aim of this project was to analyse temperature anomalies considering  as a reference value the tempreatures registered in the Northern Hemisphere in the period between 1951 and 1980. In order to carry out my observations, I have utilized data provided by the NASA's Goddard Institute for Space Studies.  
 
 
-```{r weather_data, cache=TRUE}
+```{r weather_data, cache=TRUE, include=FALSE}
 
 weather <- 
   read_csv("https://data.giss.nasa.gov/gistemp/tabledata_v3/NH.Ts+dSST.csv", 
@@ -63,7 +66,7 @@ weather <-
 
 
 
-```{r tidyweather}
+```{r tidyweather, include=FALSE}
 
 tidyweather <- weather %>%
   select(Year:Dec) %>% 
@@ -77,7 +80,7 @@ tidyweather <- weather %>%
 I have plotted the data using a time-series scatter plot, and adding a trendline. 
 
 
-```{r scatter_plot,  }
+```{r scatter_plot, echo=FALSE}
 
 tidyweather <- tidyweather %>%
   mutate(date = ymd(paste(as.character(Year), Month, "1")),
@@ -111,10 +114,7 @@ ggplot(tidyweather, aes(x=date, y = delta))+
 ```
 
 
-I have grouped the data into different time periods to study the historical figures. NASA calculates a temperature anomaly as difference form the base period of 1951-1980. The code below creates a new data frame called `comparison` that groups data in five time periods: 1881-1920, 1921-1950, 1951-1980, 1981-2010 and 2011-present.
-
-
-```{r intervals,  }
+```{r intervals, include=FALSE}
 
 comparison <- tidyweather %>% 
   filter(Year>= 1881) %>%     #remove years prior to 1881
@@ -130,7 +130,7 @@ comparison <- tidyweather %>%
 ```
 
 
-```{r density_plot,  }
+```{r density_plot, include=FALSE}
 
 ggplot(comparison, aes(x=delta, fill=interval))+
   geom_density(alpha=0.2) +   #density plot with transparency set to 20%
@@ -142,7 +142,7 @@ ggplot(comparison, aes(x=delta, fill=interval))+
 
 ```
 
-```{r averaging,  }
+```{r averaging, include=FALSE}
 
 #creating yearly averages
 average_annual_anomaly <- tidyweather %>% 
@@ -169,4 +169,4 @@ ggplot(average_annual_anomaly, aes(x=Year, y= annual_average_delta))+
 
 ```
 
-
+AS shown in the plot as well as according to an ongoing temperature analysis conducted by scientists at NASA’s Goddard Institute for Space Studies (GISS), the average global temperature on Earth has increased by a little more than 1° Celsius (2° Fahrenheit) since 1880. Two-thirds of the warming has occurred since 1975, at a rate of roughly 0.15-0.20°C per decade.
