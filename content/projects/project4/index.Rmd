@@ -1,0 +1,109 @@
+---
+title: "Brexit"
+author: "Andrea Gerards"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: flatly
+    highlight: zenburn
+    number_sections: yes
+    toc: yes
+    toc_float: yes
+    code_folding: show
+---
+
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+
+```{r load-libraries, include=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(gapminder)  # gapminder dataset
+library(here)
+```
+
+# Task 3: Brexit voting
+
+We will have a quick look at the results of the 2016 Brexit vote in the UK. First we read the data using `read_csv()` and have a quick glimpse at the data
+
+```{r load_brexit_data, message=FALSE, warning=FALSE}
+brexit_results <- read_csv(here::here("Data","brexit_results.csv"))
+
+
+glimpse(brexit_results)
+```
+
+
+The data comes from [Elliott Morris](https://www.thecrosstab.com/), who cleaned it and made it available through his [DataCamp class on analysing election and polling data in R](https://www.datacamp.com/courses/analyzing-election-and-polling-data-in-r).
+
+Our main outcome variable (or y) is `leave_share`, which is the percent of votes cast in favour of Brexit, or leaving the EU. Each row is a UK [parliament constituency](https://en.wikipedia.org/wiki/United_Kingdom_Parliament_constituencies). 
+
+To get a sense of the spread of the data, plot a histogram and a density plot of the leave share in all constituencies.
+
+```{r brexit_histogram, warning=FALSE, message=FALSE}
+ggplot(brexit_results, aes(x = leave_share)) +
+  geom_histogram(binwidth = 2.5)
+
+ggplot(brexit_results, aes(x = leave_share)) +
+  geom_density()
+```
+
+One common explanation for the Brexit outcome was fear of immigration and opposition to the EU's more open border policy. We can check the relationship (or correlation) between the proportion of native born residents (`born_in_uk`) in a constituency and its `leave_share`. To do this, let us get the correlation between the two variables
+
+```{r brexit_immigration_correlation}
+brexit_results %>% 
+  select(leave_share, born_in_uk) %>% 
+  cor()
+```
+
+The correlation is almost 0.5, which shows that the two variables are positively correlated. 
+
+We can also create a scatterplot between these two variables using `geom_point`. We also add the best fit line, using  `geom_smooth(method = "lm")`. 
+
+```{r brexit_immigration_plot}
+ggplot(brexit_results, aes(x = born_in_uk, y = leave_share)) +
+  geom_point(alpha=0.3) +
+  geom_smooth(method = "lm") +
+  theme_bw() +
+  NULL
+```
+
+You have the code for the plots, I would like you to revisit all of them and use the `labs()` function to add an informative title, subtitle, and axes titles to all plots.
+
+What can you say about the relationship shown above? Again, don't just say what's happening in the graph. Tell some sort of story and speculate about the differences in the patterns.
+
+> Type your answer after, and outside, this blockquote.
+
+```{r brexit_histogram1, warning=FALSE, message=FALSE}
+ggplot(brexit_results, aes(x = leave_share)) +
+  geom_histogram(binwidth = 2.5) + labs(title = "Plot 1", subtitle = "Percentage of Brexit votes across constituencies", y = "UK parliamentary constituencies", x = "% of pro - Brexit votes")
+
+ggplot(brexit_results, aes(x = leave_share)) +
+  geom_density() + labs(title = "Plot 2", subtitle = "Density function of Brexit votes across constituencies", y = "density", x = "% of pro - Brexit votes")
+
+brexit_results %>% 
+  select(leave_share, born_in_uk) %>% 
+  cor()
+
+ggplot(brexit_results, aes(x = born_in_uk, y = leave_share)) +
+  geom_point(alpha=0.3) +
+  geom_smooth(method = "lm") +
+  theme_bw() + labs(title = "Graph 3", subtitle = "Scatterplot of correlation between % of Brexit votes and % of native born residents", x = "% of UK born residents", y = "% of pro - Brexit votes")
+```
+
+## Commentary
+The plots quite clearly highlight the positive correlation between being born/residing in the UK and wanting to leave the EU. Notwithstanding a non perfect correlation of 0.5, the relationship between these two variables is potentially highly driven by social and economic constituencies-related factors. As a matter of fact, the rural and less wealthy parts of the UK are known to be the ones more in favour of Brexit and potentially also more impacted by external phenomena as immigration. Rural areas would be typically populated by greater percentages of UK native residents, and this would definitely impact the data correlation observation.  

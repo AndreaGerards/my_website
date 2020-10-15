@@ -116,10 +116,10 @@ disqusShortname = ""
       url = "projects/project3"
 
     [[params.tiles.showcase]]
-      title = "Ipsum"
-      subtitle = "Nisl Sed Aliquam"
+      title = "Brexit"
+      subtitle = "Analysis of the brexit vote in the UK"
       image = "pic04.jpg"
-      url = "blogs/ipsum"
+      url = "projects/project4"
 
     #[[params.tiles.showcase]]
       #title = "Consequat"
