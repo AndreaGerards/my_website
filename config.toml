@@ -122,8 +122,8 @@ disqusShortname = ""
       url = "projects/project4"
 
     [[params.tiles.showcase]]
-      title = "Timeline"
-      subtitle = "Ipsum Dolor Sit Amet"
+      title = "Let's Play!"
+      subtitle = "Enter to play The Pond"
       image = "pic05.jpg"
       url = "projects/project00"
 

@@ -13,57 +13,21 @@ output:
 ---
 
 ```{r, setup, include=FALSE}
-knitr::opts_chunk$set(
-  message = FALSE, 
-  warning = FALSE, 
-  tidy=FALSE,     # display code as typed
-  size="small")   # slightly smaller font for code
-options(digits = 3)
 
-# default figure size
-knitr::opts_chunk$set(
-  fig.width=6.75, 
-  fig.height=6.75,
-  fig.align = "center"
-)
-```
+library(eurolig)
+library(dplyr)
+library(ggplot2)
+library(rfeb)
+
+pbp <- extractPbp(game_code = 260, season = 2017)
 
 
-```{r load-libraries, include=FALSE}
-
-library(timevis)
-
-```
-Welcome to my timeline, the graphical temporal representation of my experiences!
- 
-## Academic timeline
-
-```{r academic, echo=FALSE, message=FALSE, warning=FALSE}
+assists <- getAssists(pbp, team = "MAD")
 
 
-data <- data.frame(
-  id      = 1:4,
-  content = c("Bocconi Univeristy"  , "Imperial College Business School"  ,"Mannheim University", "London Business School"),
-  start   = c("2016-08-23", "2017-07-20", "2018-09-01", "2020-09-02"),
-  end     = c("2019-12-05", "2017-08-16", "2018-12-20", NA)
-)
+shots <- extractShots(260, 2017)
+plotShotchart(shots)
 
-timevis(data)
 
 ```
 
-
-## Professional timeline
-
-```{r professional, echo=FALSE, message=FALSE, warning=FALSE}
-
-data <- data.frame( 
-  id      = 1:4,
-  content = c("Deloitte"  , "Macquarie"  ,"PAI Partners", "Credit Suisse"),
-  start   = c("2018-07-02", "2019-06-03", "2019-12-02", "2020-08-12"),
-  end     = c("2018-10-31", "2019-09-02", "2020-06-30", NA)
-)
-
-timevis(data)
-
-```
