@@ -1,0 +1,50 @@
+---
+title: "Let's play!"
+author: "Andrea Gerards"
+date: "12/09/2020"
+output:
+  word_document:
+    toc: yes
+  html_document:
+    highlight: zenburn
+    theme: flatly
+    toc: yes
+    toc_float: yes
+---
+
+Welcome to my timeline, the graphical temporal representation of my experiences!
+
+## Academic timeline
+
+```{r load-libraries, message=FALSE, warning=FALSE}
+
+library(timevis)
+
+data <- data.frame(
+  id      = 1:4,
+  content = c("Bocconi Univeristy"  , "Imperial College Business School"  ,"Mannheim University", "London Business School"),
+  start   = c("2016-08-23", "2017-07-20", "2018-09-01", "2020-09-02"),
+  end     = c("2019-12-05", "2017-08-16", "2018-12-20", NA)
+)
+
+timevis(data)
+
+```
+
+
+## Professional timeline
+
+```{r load-libraries, message=FALSE, warning=FALSE}
+
+library(timevis)
+
+data <- data.frame(
+  id      = 1:4,
+  content = c("Deloitte"  , "Macquarie"  ,"PAI Partners", "Credit Suisse"),
+  start   = c("2018-07-02", "2019-06-03", "2019-12-02", "2020-08-12"),
+  end     = c("2018-10-31", "2019-09-02", "2020-30-06", NA)
+)
+
+timevis(data)
+
+```

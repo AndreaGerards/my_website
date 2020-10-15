@@ -94,6 +94,15 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     </item>
     
     <item>
+      <title>Let&#39;s play!</title>
+      <link>/projects/project00/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/project00/</guid>
+      <description>library(grDevices)rsnake &amp;lt;- function(x=8,y=8, auto=NULL, plot=TRUE, detailed=FALSE) {bodycheck &amp;lt;- function(newhead) {if(newhead[1] &amp;lt; 1 || newhead[1] &amp;gt; x || newhead[2] &amp;lt; 1 || newhead[2] &amp;gt; y) return(FALSE)return(sum(sapply(1:length(snake), function(x){identical(snake[[x]], newhead)})) == 0)}newfood &amp;lt;- function() {while(!bodycheck(food &amp;lt;&amp;lt;- c(round(runif(1, min=1, max=x)), round(runif(1,min=1, max=y))))) FALSErx &amp;lt;- food[1]ry &amp;lt;- food[2]if(!plot) return()rect(rx-0.1, ry-0.1, rx+0.1, ry+0.1,col=&amp;quot;red&amp;quot;)}gameover &amp;lt;- function() {newheads &amp;lt;- matrix(rep(c(snake[[1]][1], snake[[1]][2]),4),ncol=2,byrow=TRUE)newheads[,1] &amp;lt;- newheads[,1] + c(1,-1,0,0)newheads[,2] &amp;lt;- newheads[,2] + c(0,0,1,-1)for(i in 1:nrow(newheads)) if(bodycheck(newheads[i,])) return(FALSE)return(TRUE)}drawsnake &amp;lt;- function(prevsnake=NULL) {if(!</description>
+    </item>
+    
+    <item>
       <title>Who am I?</title>
       <link>/projects/project0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
