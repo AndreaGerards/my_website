@@ -34,13 +34,18 @@ knitr::opts_chunk$set(
 library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
 library(gapminder)  # gapminder dataset
 library(here)
+library(ggplot2)
+library(ggthemes)
 ```
 
-# Task 3: Brexit voting
+### Introduction
 
-We will have a quick look at the results of the 2016 Brexit vote in the UK. First we read the data using `read_csv()` and have a quick glimpse at the data
+The UK referendum on EU membership on 23 June 2016 is a key moment for European (dis)integration. Even though the outcome had been expected to be tight, in the days running up to the referendum bookmakers and pollsters predicted the ‘Remain’ side to win. Many observers were left puzzled and keen to understand who voted for ‘Leave’. Various newspapers and blogs quickly reported plots that relate the referendum vote to key characteristics such as the age profile of the population. It was also pointed out that the Brexit vote relates to class identification and social attitudes more generally.
 
-```{r load_brexit_data, message=FALSE, warning=FALSE}
+Furthermore, one common explanation for the Brexit outcome was fear of immigration and opposition to the EU's more open border policy. In this analysis I have checked the relationship (or correlation) between the proportion of native born residents (`born_in_uk`) in a constituency and its `leave_share`.
+
+
+```{r load_brexit_data, message=FALSE, warning=FALSE, include=FALSE}
 brexit_results <- read_csv(here::here("Data","brexit_results.csv"))
 
 
@@ -54,46 +59,55 @@ Our main outcome variable (or y) is `leave_share`, which is the percent of votes
 
 To get a sense of the spread of the data, plot a histogram and a density plot of the leave share in all constituencies.
 
-```{r brexit_histogram, warning=FALSE, message=FALSE}
-ggplot(brexit_results, aes(x = leave_share)) +
+```{r brexit_histogram, echo=FALSE, message=FALSE, warning=FALSE}
+p1 <- ggplot(brexit_results, aes(x = leave_share)) +
   geom_histogram(binwidth = 2.5)
 
-ggplot(brexit_results, aes(x = leave_share)) +
+p2 <- ggplot(brexit_results, aes(x = leave_share)) +
   geom_density()
+
+p1 + theme_economist() + 
+  scale_color_economist()
+
+p2 + theme_economist() + 
+  scale_color_economist()
+
 ```
 
-One common explanation for the Brexit outcome was fear of immigration and opposition to the EU's more open border policy. We can check the relationship (or correlation) between the proportion of native born residents (`born_in_uk`) in a constituency and its `leave_share`. To do this, let us get the correlation between the two variables
 
-```{r brexit_immigration_correlation}
+```{r brexit_immigration_correlation, include=FALSE}
 brexit_results %>% 
   select(leave_share, born_in_uk) %>% 
   cor()
 ```
 
 The correlation is almost 0.5, which shows that the two variables are positively correlated. 
+I have also included a scatterplot between these two variables using `geom_point`
 
-We can also create a scatterplot between these two variables using `geom_point`. We also add the best fit line, using  `geom_smooth(method = "lm")`. 
-
-```{r brexit_immigration_plot}
-ggplot(brexit_results, aes(x = born_in_uk, y = leave_share)) +
+```{r brexit_immigration_plot, echo=FALSE}
+p <- ggplot(brexit_results, aes(x = born_in_uk, y = leave_share)) +
   geom_point(alpha=0.3) +
   geom_smooth(method = "lm") +
   theme_bw() +
   NULL
+
+p + theme_economist() + 
+  scale_color_economist()
+
 ```
 
-You have the code for the plots, I would like you to revisit all of them and use the `labs()` function to add an informative title, subtitle, and axes titles to all plots.
-
-What can you say about the relationship shown above? Again, don't just say what's happening in the graph. Tell some sort of story and speculate about the differences in the patterns.
 
 > Type your answer after, and outside, this blockquote.
 
-```{r brexit_histogram1, warning=FALSE, message=FALSE}
+```{r brexit_histogram1, echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(brexit_results, aes(x = leave_share)) +
-  geom_histogram(binwidth = 2.5) + labs(title = "Plot 1", subtitle = "Percentage of Brexit votes across constituencies", y = "UK parliamentary constituencies", x = "% of pro - Brexit votes")
+  geom_histogram(binwidth = 2.5) + labs(title = "Plot 1", subtitle = "Percentage of Brexit votes across constituencies", y = "UK parliamentary constituencies", x = "% of pro - Brexit votes")+
+  theme_economist() + 
+  scale_color_economist()
 
 ggplot(brexit_results, aes(x = leave_share)) +
-  geom_density() + labs(title = "Plot 2", subtitle = "Density function of Brexit votes across constituencies", y = "density", x = "% of pro - Brexit votes")
+  geom_density() + labs(title = "Plot 2", subtitle = "Density function of Brexit votes across constituencies", y = "density", x = "% of pro - Brexit votes")+ theme_economist() + 
+  scale_color_economist()
 
 brexit_results %>% 
   select(leave_share, born_in_uk) %>% 
@@ -102,8 +116,11 @@ brexit_results %>%
 ggplot(brexit_results, aes(x = born_in_uk, y = leave_share)) +
   geom_point(alpha=0.3) +
   geom_smooth(method = "lm") +
-  theme_bw() + labs(title = "Graph 3", subtitle = "Scatterplot of correlation between % of Brexit votes and % of native born residents", x = "% of UK born residents", y = "% of pro - Brexit votes")
+  theme_economist() + 
+  scale_color_economist()+ 
+  labs(title = "Graph 3", subtitle = "Scatterplot of correlation between % of Brexit votes and % of native born residents", x = "% of UK born residents", y = "% of pro - Brexit votes")
 ```
 
 ## Commentary
+
 The plots quite clearly highlight the positive correlation between being born/residing in the UK and wanting to leave the EU. Notwithstanding a non perfect correlation of 0.5, the relationship between these two variables is potentially highly driven by social and economic constituencies-related factors. As a matter of fact, the rural and less wealthy parts of the UK are known to be the ones more in favour of Brexit and potentially also more impacted by external phenomena as immigration. Rural areas would be typically populated by greater percentages of UK native residents, and this would definitely impact the data correlation observation.  

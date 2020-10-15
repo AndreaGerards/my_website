@@ -22,8 +22,7 @@
       <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>/projects/project4/</guid>
-      <description>Task 3: Brexit votingWe will have a quick look at the results of the 2016 Brexit vote in the UK. First we read the data using read_csv() and have a quick glimpse at the data
-brexit_results &amp;lt;- read_csv(here::here(&amp;quot;Data&amp;quot;,&amp;quot;brexit_results.csv&amp;quot;))glimpse(brexit_results)## Rows: 632## Columns: 11## $ Seat &amp;lt;chr&amp;gt; &amp;quot;Aldershot&amp;quot;, &amp;quot;Aldridge-Brownhills&amp;quot;, &amp;quot;Altrincham and Sal...## $ con_2015 &amp;lt;dbl&amp;gt; 50.6, 52.0, 53.0, 44.0, 60.8, 22.4, 52.5, 22.1, 50.7, 5...## $ lab_2015 &amp;lt;dbl&amp;gt; 18.</description>
+      <description>IntroductionThe UK referendum on EU membership on 23 June 2016 is a key moment for European (dis)integration. Even though the outcome had been expected to be tight, in the days running up to the referendum bookmakers and pollsters predicted the ‘Remain’ side to win. Many observers were left puzzled and keen to understand who voted for ‘Leave’. Various newspapers and blogs quickly reported plots that relate the referendum vote to key characteristics such as the age profile of the population.</description>
     </item>
     
     <item>
