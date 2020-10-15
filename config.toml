@@ -110,9 +110,9 @@ disqusShortname = ""
       url = "projects/project2"
 
     [[params.tiles.showcase]]
-      title = "Masks analysis"
-      subtitle = "Lorem Etiam Nullam"
-      image = "pic03.jpg"
+      title = "Usage of Masks"
+      subtitle = "Acceptance of masks according to the New York Times"
+      image = "projects/project3/pic03.jpg"
       url = "projects/project3"
 
     [[params.tiles.showcase]]
