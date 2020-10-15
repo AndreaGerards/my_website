@@ -8,12 +8,13 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 15 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Analysis on Northern Hemishpere temperature</title>
+      <title>Analysing weather and temperature anomalies</title>
       <link>/projects/project1/</link>
       <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>/projects/project1/</guid>
-      <description>Climate change and temperature anomaliesWhen researching global climate changes and temperature data, you will often read about the “temperature anomaly.” That is the difference between the long-term average temperature (sometimes called a reference value) and the temperature that is actually occurring. In other words, the long-term average temperature is one that would be expected; the anomaly is the difference between what you would expect and what is happening.</description>
+      <description>OverviewWhen researching global climate changes and temperature data, you will often read about the “temperature anomaly.” That is the difference between the long-term average temperature (sometimes called a reference value) and the temperature that is actually occurring. In other words, the long-term average temperature is one that would be expected; the anomaly is the difference between what you would expect and what is happening.
+A positive anomaly means that the temperature was warmer than normal; a negative anomaly indicates that the temperature was cooler than normal.</description>
     </item>
     
     <item>

@@ -1,5 +1,5 @@
 ---
-title: "Analysis on Northern Hemishpere temperature"
+title: "Analysing weather and temperature anomalies"
 author: "Andrea Gerards"
 date: "`r Sys.Date()`"
 output:
@@ -46,13 +46,13 @@ library(vroom)
 
 
 
-# Climate change and temperature anomalies 
+### Overview 
 
 When researching global climate changes and temperature data, you will often read about the “temperature anomaly.” That is the difference between the long-term average temperature (sometimes called a reference value) and the temperature that is actually occurring. In other words, the long-term average temperature is one that would be expected; the anomaly is the difference between what you would expect and what is happening.
 
 A positive anomaly means that the temperature was warmer than normal; a negative anomaly indicates that the temperature was cooler than normal.
 
-The aim of this project was to analyse temperature anomalies considering  as a reference value the tempreatures registered in the Northern Hemisphere in the period between 1951 and 1980. In order to carry out my observations, I have utilized data provided by the NASA's Goddard Institute for Space Studies.  
+The aim of this project was to analyze temperature anomalies considering  as a reference value the temperatures registered in the Northern Hemisphere in the period between 1951 and 1980. In order to carry out my observations, I have utilized data provided by the NASA's Goddard Institute for Space Studies.  
 
 
 ```{r weather_data, cache=TRUE, include=FALSE}
@@ -77,8 +77,7 @@ tidyweather <- weather %>%
 
 ## Plots
 
-I have plotted the data using a time-series scatter plot, and adding a trendline. 
-
+As depicted in the plots below as well as according to an ongoing temperature analysis conducted by scientists at NASA’s Goddard Institute for Space Studies (GISS), the average global temperature on Earth has increased by a little more than 1° Celsius (2° Fahrenheit) since 1880. Two-thirds of the warming has occurred since 1975, at a rate of roughly 0.15-0.20°C per decade.
 
 ```{r scatter_plot, echo=FALSE}
 
@@ -93,7 +92,9 @@ ggplot(tidyweather, aes(x=date, y = delta))+
   theme_bw() +
   labs (
     title = "Weather Anomalies"
-  )
+  )+
+  theme_economist() + 
+  scale_color_economist()
 
 ```
 
@@ -109,7 +110,9 @@ ggplot(tidyweather, aes(x=date, y = delta))+
   labs (
     title = "Weather Anomalies"
   )+
-  facet_wrap(~month)
+  facet_wrap(~month)+
+  theme_economist() + 
+  scale_color_economist()
 
 ```
 
@@ -130,7 +133,7 @@ comparison <- tidyweather %>%
 ```
 
 
-```{r density_plot, include=FALSE}
+```{r density_plot, echo=FALSE}
 
 ggplot(comparison, aes(x=delta, fill=interval))+
   geom_density(alpha=0.2) +   #density plot with transparency set to 20%
@@ -138,11 +141,13 @@ ggplot(comparison, aes(x=delta, fill=interval))+
   labs (
     title = "Density Plot for Monthly Temperature Anomalies",
     y     = "Density"         #changing y-axis label to sentence case
-  )
+  )+
+  theme_economist() + 
+  scale_color_economist()
 
 ```
 
-```{r averaging, include=FALSE}
+```{r averaging, echo=FALSE}
 
 #creating yearly averages
 average_annual_anomaly <- tidyweather %>% 
@@ -164,9 +169,11 @@ ggplot(average_annual_anomaly, aes(x=Year, y= annual_average_delta))+
   labs (
     title = "Average Yearly Anomaly",
     y     = "Average Annual Delta"
-  )                         
+  )   +
+  theme_economist() + 
+  scale_color_economist()                      
 
 
 ```
 
-AS shown in the plot as well as according to an ongoing temperature analysis conducted by scientists at NASA’s Goddard Institute for Space Studies (GISS), the average global temperature on Earth has increased by a little more than 1° Celsius (2° Fahrenheit) since 1880. Two-thirds of the warming has occurred since 1975, at a rate of roughly 0.15-0.20°C per decade.
+

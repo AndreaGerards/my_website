@@ -99,7 +99,7 @@ disqusShortname = ""
     
     [[params.tiles.showcase]]
       title = "Weather"
-      subtitle = "Analysing statistical weather changes"
+      subtitle = "Analysing weather anomalies"
       image = "projects/project1/pic01.jpg"
       url = "projects/project1"
 
@@ -118,7 +118,7 @@ disqusShortname = ""
     [[params.tiles.showcase]]
       title = "Brexit"
       subtitle = "Analysis of the brexit vote in the UK"
-      image = "pic04.jpg"
+      image = "projects/project4/pic04.jpg"
       url = "projects/project4"
 
     #[[params.tiles.showcase]]
