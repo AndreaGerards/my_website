@@ -55,11 +55,18 @@ Our main outcome variable (or y) is `leave_share`, which is the percent of votes
 To get a sense of the spread of the data, plot a histogram and a density plot of the leave share in all constituencies.
 
 ```{r brexit_histogram, warning=FALSE, message=FALSE}
-ggplot(brexit_results, aes(x = leave_share)) +
+p1 <- ggplot(brexit_results, aes(x = leave_share)) +
   geom_histogram(binwidth = 2.5)
 
-ggplot(brexit_results, aes(x = leave_share)) +
+p2 <- ggplot(brexit_results, aes(x = leave_share)) +
   geom_density()
+
+p1 + theme_economist() + 
+  scale_color_economist()
+
+p2 + theme_economist() + 
+  scale_color_economist()
+
 ```
 
 One common explanation for the Brexit outcome was fear of immigration and opposition to the EU's more open border policy. We can check the relationship (or correlation) between the proportion of native born residents (`born_in_uk`) in a constituency and its `leave_share`. To do this, let us get the correlation between the two variables
@@ -75,11 +82,15 @@ The correlation is almost 0.5, which shows that the two variables are positively
 We can also create a scatterplot between these two variables using `geom_point`. We also add the best fit line, using  `geom_smooth(method = "lm")`. 
 
 ```{r brexit_immigration_plot}
-ggplot(brexit_results, aes(x = born_in_uk, y = leave_share)) +
+p <- ggplot(brexit_results, aes(x = born_in_uk, y = leave_share)) +
   geom_point(alpha=0.3) +
   geom_smooth(method = "lm") +
   theme_bw() +
   NULL
+
+p + theme_economist() + 
+  scale_color_economist()
+
 ```
 
 You have the code for the plots, I would like you to revisit all of them and use the `labs()` function to add an informative title, subtitle, and axes titles to all plots.
@@ -90,10 +101,13 @@ What can you say about the relationship shown above? Again, don't just say what'
 
 ```{r brexit_histogram1, warning=FALSE, message=FALSE}
 ggplot(brexit_results, aes(x = leave_share)) +
-  geom_histogram(binwidth = 2.5) + labs(title = "Plot 1", subtitle = "Percentage of Brexit votes across constituencies", y = "UK parliamentary constituencies", x = "% of pro - Brexit votes")
+  geom_histogram(binwidth = 2.5) + labs(title = "Plot 1", subtitle = "Percentage of Brexit votes across constituencies", y = "UK parliamentary constituencies", x = "% of pro - Brexit votes")+
+  theme_economist() + 
+  scale_color_economist()
 
 ggplot(brexit_results, aes(x = leave_share)) +
-  geom_density() + labs(title = "Plot 2", subtitle = "Density function of Brexit votes across constituencies", y = "density", x = "% of pro - Brexit votes")
+  geom_density() + labs(title = "Plot 2", subtitle = "Density function of Brexit votes across constituencies", y = "density", x = "% of pro - Brexit votes")+ theme_economist() + 
+  scale_color_economist()
 
 brexit_results %>% 
   select(leave_share, born_in_uk) %>% 
@@ -102,7 +116,9 @@ brexit_results %>%
 ggplot(brexit_results, aes(x = born_in_uk, y = leave_share)) +
   geom_point(alpha=0.3) +
   geom_smooth(method = "lm") +
-  theme_bw() + labs(title = "Graph 3", subtitle = "Scatterplot of correlation between % of Brexit votes and % of native born residents", x = "% of UK born residents", y = "% of pro - Brexit votes")
+  theme_economist() + 
+  scale_color_economist()+ 
+  labs(title = "Graph 3", subtitle = "Scatterplot of correlation between % of Brexit votes and % of native born residents", x = "% of UK born residents", y = "% of pro - Brexit votes")
 ```
 
 ## Commentary
