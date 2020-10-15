@@ -1,5 +1,5 @@
 ---
-title: "Let's play!"
+title: 'My timelines'
 author: "Andrea Gerards"
 date: "12/09/2020"
 output:
@@ -12,13 +12,34 @@ output:
     toc_float: yes
 ---
 
-Welcome to my timeline, the graphical temporal representation of my experiences!
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
 
-## Academic timeline
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
 
-```{r load-libraries, message=FALSE, warning=FALSE}
+
+```{r load-libraries, include=FALSE}
 
 library(timevis)
+
+```
+Welcome to my timeline, the graphical temporal representation of my experiences!
+ 
+## Academic timeline
+
+```{r academic, echo=FALSE, message=FALSE, warning=FALSE}
+
 
 data <- data.frame(
   id      = 1:4,
@@ -34,15 +55,13 @@ timevis(data)
 
 ## Professional timeline
 
-```{r load-libraries, message=FALSE, warning=FALSE}
+```{r professional, echo=FALSE, message=FALSE, warning=FALSE}
 
-library(timevis)
-
-data <- data.frame(
+data <- data.frame( 
   id      = 1:4,
   content = c("Deloitte"  , "Macquarie"  ,"PAI Partners", "Credit Suisse"),
   start   = c("2018-07-02", "2019-06-03", "2019-12-02", "2020-08-12"),
-  end     = c("2018-10-31", "2019-09-02", "2020-30-06", NA)
+  end     = c("2018-10-31", "2019-09-02", "2020-06-30", NA)
 )
 
 timevis(data)

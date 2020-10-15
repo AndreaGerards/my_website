@@ -1,5 +1,5 @@
 ---
-title: "Let's play!"
+title: 'My timelines'
 author: "Andrea Gerards"
 date: "12/09/2020"
 output:
@@ -12,123 +12,37 @@ output:
     toc_float: yes
 ---
 
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<link href="/rmarkdown-libs/vis/vis.min.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/vis/vis.min.js"></script>
+<link href="/rmarkdown-libs/timeline/timevis.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/timevis-binding/timevis.js"></script>
+<script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="/rmarkdown-libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/bootstrap/js/bootstrap.min.js"></script>
+<script src="/rmarkdown-libs/bootstrap/shim/html5shiv.min.js"></script>
+<script src="/rmarkdown-libs/bootstrap/shim/respond.min.js"></script>
 
 
-<pre class="r"><code>library(grDevices)
-
-rsnake &lt;- function(x=8,y=8, auto=NULL, plot=TRUE, detailed=FALSE) {
-  bodycheck &lt;- function(newhead) {
-    if(newhead[1] &lt; 1 || newhead[1] &gt; x || newhead[2] &lt; 1 || newhead[2] &gt; y) return(FALSE)
-    return(sum(sapply(1:length(snake), function(x){identical(snake[[x]], newhead)})) == 0)
-  }
-  
-  newfood &lt;- function() {
-    while(!bodycheck(food &lt;&lt;- c(round(runif(1, min=1, max=x)), round(runif(1,min=1, max=y))))) FALSE
-    rx &lt;- food[1]
-    ry &lt;- food[2]
-    if(!plot) return()
-    rect(rx-0.1, ry-0.1, rx+0.1, ry+0.1,col=&quot;red&quot;)
-  }
-  
-  gameover &lt;- function() {
-    newheads &lt;- matrix(rep(c(snake[[1]][1], snake[[1]][2]),4),ncol=2,byrow=TRUE)
-    newheads[,1] &lt;- newheads[,1] + c(1,-1,0,0)
-    newheads[,2] &lt;- newheads[,2] + c(0,0,1,-1)
-    for(i in 1:nrow(newheads)) if(bodycheck(newheads[i,])) return(FALSE)
-    return(TRUE)
-  }
-  drawsnake &lt;- function(prevsnake=NULL) {
-    if(!plot) return(NULL)
-    rect(1-0.6+0.1, y+0.5, 6, y+1-0.05, col=&quot;white&quot;, lty=&quot;blank&quot;)
-    text(1-0.6, y+0.7, paste(&quot;Score:&quot;,score),pos=4)
-    if(!is.null(prevsnake)) {
-      # draw a &quot;body&quot; over the previous head
-      rx &lt;- prevsnake[[1]][1]    
-      ry &lt;- prevsnake[[1]][2]
-      rect(rx-0.4, ry-0.4, rx+0.4, ry+0.4,col=&quot;white&quot;)
-      # clear the &quot;tail&quot;
-      if(length(prevsnake) == length(snake)) {
-        rx &lt;- prevsnake[[length(prevsnake)]][1]
-        ry &lt;- prevsnake[[length(prevsnake)]][2]
-        rect(rx-0.5, ry-0.5, rx+0.5, ry+0.5,col=&quot;white&quot;, lty=&quot;blank&quot;)
-      }
-      # draw the new &quot;head&quot;
-      rx &lt;- snake[[1]][1]
-      ry &lt;- snake[[1]][2]
-      rect(rx-0.4, ry-0.4, rx+0.4, ry+0.4,col=&quot;gray&quot;)    
-      return(NULL)
-    }
-    headx &lt;- snake[[1]][1]
-    heady &lt;- snake[[1]][2]
-    cols &lt;- c(&quot;gray&quot;, rep(&quot;white&quot;, length(snake)-1))
-    sapply(1:length(snake), function(x){
-      rx &lt;- snake[[x]][1]
-      ry &lt;- snake[[x]][2]
-      rect(rx-0.4, ry-0.4, rx+0.4, ry+0.4,col=cols[x])
-    })
-  }
-  
-  origin &lt;- c(floor(x/2), floor(y/2))
-  if(origin[1]-2 &lt; 1) return(NULL)
-  snake &lt;- list(origin, c(origin[1]-1, origin[2]), c(origin[1]-2, origin[2]))
-  if(plot) {
-    plot(origin[1],origin[2],type=&quot;n&quot;, main=&quot;Snake Game&quot;, xlab=&quot;&quot;, ylab=&quot;&quot;, asp=1, axes=FALSE, xlim=c(1-0.6,x+0.6), ylim=c(1-0.6,y+1))
-    rect(1-0.6,1-0.6,x+0.6,y+1)
-  }
-  psnake &lt;- NULL
-  score &lt;- 0
-  inputs &lt;- 0
-  movements &lt;- 0
-  drawsnake(psnake)
-  newfood()
-  keydown &lt;- function(key){
-    #print(c(snake[[1]][1], snake[[1]][2], key))
-    if(key == &quot;q&quot;) return(invisible(1))
-    inputs &lt;&lt;- inputs + 1
-    psnake &lt;&lt;- snake
-    newhead &lt;- switch(key, 
-                      &quot;l&quot; = c(psnake[[1]][1]+1, psnake[[1]][2]),
-                      &quot;Right&quot; = c(psnake[[1]][1]+1, psnake[[1]][2]),
-                      &quot;h&quot; = c(psnake[[1]][1]-1, psnake[[1]][2]),
-                      &quot;Left&quot; = c(psnake[[1]][1]-1, psnake[[1]][2]),
-                      &quot;k&quot; = c(psnake[[1]][1], psnake[[1]][2]+1),
-                      &quot;Up&quot;= c(psnake[[1]][1], psnake[[1]][2]+1),
-                      &quot;j&quot; = c(psnake[[1]][1], psnake[[1]][2]-1),
-                      &quot;Down&quot;= c(psnake[[1]][1], psnake[[1]][2]-1),
-                      c(psnake[[1]][1], psnake[[1]][2]))
-    if(bodycheck(newhead)) {
-      if(identical(newhead, food)) {
-        snake &lt;&lt;- append(list(newhead), psnake)
-        score &lt;&lt;- score + 1
-        newfood()
-      } else {
-        last &lt;- length(psnake)+1
-        snake &lt;&lt;- append(list(newhead), psnake)[-last]
-      }
-      drawsnake(psnake) 
-      if(gameover()) {
-        if(plot) text(x/2+1, y/2+1, labels=&quot;GAME OVER&quot;)
-        return(invisible(2))
-      }
-      movements &lt;&lt;- movements + 1
-      return(NULL)
-    }
-    
-  }
-  if(is.null(auto)) {
-    setGraphicsEventHandlers(onKeybd=keydown)
-    getGraphicsEvent()
-  } else {
-    game &lt;- function(){
-      r &lt;- keydown(auto(snake,food,x,y))
-      if(is.null(r)) return(TRUE)
-      else if(r != 2) return(TRUE)
-      else return(FALSE)
-    }
-    while(game()) TRUE
-  }
-  if(!detailed) return(score)
-  scores &lt;- c(score, inputs, movements)
-  names(scores) &lt;- c(&quot;Score&quot;, &quot;Inputs&quot;, &quot;Movements&quot;)
-  return(scores)
-}</code></pre>
+<p>Welcome to my timeline, the graphical temporal representation of my experiences!</p>
+<div id="academic-timeline" class="section level2">
+<h2>Academic timeline</h2>
+<div id="htmlwidget-1" class="timevis html-widget" style="width:648px;height:648px;">
+<div class="btn-group zoom-menu">
+<button type="button" class="btn btn-default btn-lg zoom-in" title="Zoom in">+</button>
+<button type="button" class="btn btn-default btn-lg zoom-out" title="Zoom out">-</button>
+</div>
+</div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"items":[{"id":"1","content":"Bocconi Univeristy","start":"2016-08-23","end":"2019-12-05"},{"id":"2","content":"Imperial College Business School","start":"2017-07-20","end":"2017-08-16"},{"id":"3","content":"Mannheim University","start":"2018-09-01","end":"2018-12-20"},{"id":"4","content":"London Business School","start":"2020-09-02"}],"groups":null,"showZoom":true,"zoomFactor":0.5,"fit":true,"options":[],"height":null,"timezone":null,"api":[]},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="professional-timeline" class="section level2">
+<h2>Professional timeline</h2>
+<div id="htmlwidget-2" class="timevis html-widget" style="width:648px;height:648px;">
+<div class="btn-group zoom-menu">
+<button type="button" class="btn btn-default btn-lg zoom-in" title="Zoom in">+</button>
+<button type="button" class="btn btn-default btn-lg zoom-out" title="Zoom out">-</button>
+</div>
+</div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"items":[{"id":"1","content":"Deloitte","start":"2018-07-02","end":"2018-10-31"},{"id":"2","content":"Macquarie","start":"2019-06-03","end":"2019-09-02"},{"id":"3","content":"PAI Partners","start":"2019-12-02","end":"2020-06-30"},{"id":"4","content":"Credit Suisse","start":"2020-08-12"}],"groups":null,"showZoom":true,"zoomFactor":0.5,"fit":true,"options":[],"height":null,"timezone":null,"api":[]},"evals":[],"jsHooks":[]}</script>
+</div>
