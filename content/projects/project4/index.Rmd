@@ -97,7 +97,6 @@ p + theme_economist() +
 ```
 
 
-> Type your answer after, and outside, this blockquote.
 
 ```{r brexit_histogram1, echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(brexit_results, aes(x = leave_share)) +

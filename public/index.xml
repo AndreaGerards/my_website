@@ -6,7 +6,36 @@
     <description>Recent content on Portfolio webstite for Andrea Gerards</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 15 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Brexit</title>
+      <link>/projects/project4/</link>
+      <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/project4/</guid>
+      <description>IntroductionThe UK referendum on EU membership on 23 June 2016 is a key moment for European (dis)integration. Even though the outcome had been expected to be tight, in the days running up to the referendum bookmakers and pollsters predicted the ‘Remain’ side to win. Many observers were left puzzled and keen to understand who voted for ‘Leave’. Various newspapers and blogs quickly reported plots that relate the referendum vote to key characteristics such as the age profile of the population.</description>
+    </item>
+    
+    <item>
+      <title>My personality traits</title>
+      <link>/projects/project00/</link>
+      <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/project00/</guid>
+      <description>OverviewMost people have an intuitive idea of personality that is not far away from how social scientists understand it. Our families are where we typically first learn that people have a degree of consistency in how they interact with others, and later as we make friends we interpret other people’s behavior in terms of character, personal style or habit. Later in the world of work we hear and see that leaders and co-workers succeed or have problems because of the way they work with others.</description>
+    </item>
+    
+    <item>
+      <title>Voting in the UN General Assembly</title>
+      <link>/projects/project2/</link>
+      <pubDate>Fri, 16 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/project2/</guid>
+      <description>OverviewEvery September, leaders from around the world gather at the United Nations in New York to debate and pass resolutions on the biggest issues facing the planet.
+Established after World War II, the UN has grown from 51 members in 1945 to 193 members in 2019. It also has two non-member observer states, Palestine and The Holy See.
+Roll-call voting in the United Nations General Assembly (UNGA) has long attracted the attention of scholars; first to study the formation of voting blocs in the UNGA and more recently to create indicators for the common interests of states.</description>
+    </item>
+    
     <item>
       <title>Analysing weather and temperature anomalies</title>
       <link>/projects/project1/</link>
@@ -18,15 +47,6 @@ A positive anomaly means that the temperature was warmer than normal; a negative
     </item>
     
     <item>
-      <title>Brexit</title>
-      <link>/projects/project4/</link>
-      <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/project4/</guid>
-      <description>IntroductionThe UK referendum on EU membership on 23 June 2016 is a key moment for European (dis)integration. Even though the outcome had been expected to be tight, in the days running up to the referendum bookmakers and pollsters predicted the ‘Remain’ side to win. Many observers were left puzzled and keen to understand who voted for ‘Leave’. Various newspapers and blogs quickly reported plots that relate the referendum vote to key characteristics such as the age profile of the population.</description>
-    </item>
-    
-    <item>
       <title>NYT Mask Use Acceptance</title>
       <link>/projects/project3/</link>
       <pubDate>Thu, 15 Oct 2020 00:00:00 +0000</pubDate>
@@ -34,16 +54,6 @@ A positive anomaly means that the temperature was warmer than normal; a negative
       <guid>/projects/project3/</guid>
       <description>IntroductionIn some American neighborhoods, it’s hard to spot even one person outside without a face covering. In others, the odds of seeing many maskless people are quite high.
 Public health officials believe that face coverings can substantially slow transmission of the coronavirus, which is spreading rapidly in many states. But face coverings work best if they are adopted widely, and that is not the case everywhere. The accompanying map shows the odds of whether, if you encountered five people in a given area, all of them would be wearing masks.</description>
-    </item>
-    
-    <item>
-      <title>Voting in the UN General Assembly</title>
-      <link>/projects/project2/</link>
-      <pubDate>Wed, 14 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/project2/</guid>
-      <description>Let’s take a look at the voting history of countries in the United NationsGeneral Assembly. I will be using data from the unvotes package.I will make use of the tidyverse and lubridate packagesfor the analysis, and the DT package for interactive display of tabularoutput.
-DataThe unvotes package provides three datasets I can work with: un_roll_calls,un_roll_call_issues, and un_votes. Each of these datasets contains avariable called rcid, the roll call id, which can be used as a uniqueidentifier to join them with each other.</description>
     </item>
     
     <item>
@@ -91,15 +101,6 @@ DataThe unvotes package provides three datasets I can work with: un_roll_calls,
       <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
 You can embed an R code chunk like this:
 summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
-    </item>
-    
-    <item>
-      <title>My timelines</title>
-      <link>/projects/project00/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/project00/</guid>
-      <description></description>
     </item>
     
     <item>

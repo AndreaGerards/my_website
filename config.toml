@@ -92,10 +92,16 @@ disqusShortname = ""
     # Display your showcases here.
     
     [[params.tiles.showcase]]
-      title = "Who am I?"
-      subtitle = "My professional and academic background"
+      title = "My background..."
+      subtitle = "My professional and academic experience"
       image = "projects/project0/picwho.jpg"
       url = "projects/project0"
+    
+    [[params.tiles.showcase]]
+      title = "...and my personality"
+      subtitle = "My personality traits"
+      image = "projects/project00/pic00.jpg"
+      url = "projects/project00"
     
     [[params.tiles.showcase]]
       title = "Weather"
@@ -121,11 +127,6 @@ disqusShortname = ""
       image = "projects/project4/pic04.jpg"
       url = "projects/project4"
 
-    [[params.tiles.showcase]]
-      title = "Let's Play!"
-      subtitle = "Enter to play The Pond"
-      image = "pic05.jpg"
-      url = "projects/project00"
 
   #  [[params.tiles.showcase]]
    #   title = "Etiam"

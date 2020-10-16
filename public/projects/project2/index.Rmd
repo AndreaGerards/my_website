@@ -12,12 +12,6 @@ output:
     toc: yes
 ---
 
-Let's take a look at the voting history of countries in the United Nations 
-General Assembly. I will be using data from the __unvotes__ package. 
-I will make use of the __tidyverse__ and __lubridate__ packages 
-for the analysis, and the __DT__ package for interactive display of tabular 
-output.
-
 ```{r load-packages, include=FALSE}
 list.of.packages <- c("unvotes", "tidyverse","lubridate", "DT") #check if packages are installed
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
@@ -27,51 +21,43 @@ library(unvotes)
 library(tidyverse)
 library(lubridate)
 library(DT)
+library(ggthemes)
 ```
 
-## Data
+### Overview
 
-The unvotes package provides three datasets I can work with: `un_roll_calls`, 
-`un_roll_call_issues`, and `un_votes`. Each of these datasets contains a 
-variable called `rcid`, the roll call id, which can be used as a unique 
-identifier to join them with each other.
+Every September, leaders from around the world gather at the United Nations in New York to debate and pass resolutions on the biggest issues facing the planet.
 
-- The `un_votes` dataset provides information on the voting history of the 
-United Nations General Assembly. It contains one row for each country-vote pair.
+Established after World War II, the UN has grown from 51 members in 1945 to 193 members in 2019. It also has two non-member observer states, Palestine and The Holy See.
 
-```{r view-un_votes}
+Roll-call voting in the United Nations General Assembly (UNGA) has long attracted the attention of scholars; first to study the formation of voting blocs in the UNGA and more recently to create indicators for the common interests of states. 
+
+The results of the analysis, that focuses primarily on western European contries as Italy, Germany and the UK as well as the US, highlights clear historical voting trends. In particular, visualizing the "Yes" votes to resolutions, the US show a constantly decreasing percentage of positive votes. This seems to be in line with its politcal strategical evolution. 
+Digging into the data and grouping the votes in related issues, the US seems to be in line with European countries (Italy used as a proxy). Potential driver of the trend could be the presence of both within the NATO agreement.  
+
+```{r view-un_votes, include=FALSE}
 un_votes
 ```
 
-- The `un_roll_calls` dataset contains information on each roll call vote of 
-the United Nations General Assembly.
 
-```{r view-un_roll_calls}
+```{r view-un_roll_calls, include=FALSE}
 un_roll_calls
 ```
 
-- The `un_roll_call_issues` dataset contains (topic) classifications of roll 
-call votes of the United Nations General Assembly. Many votes had no topic, 
-and some have more than one. In our dataset, there are six topics and 
 
-```{r view-un_roll_call_issues}
+```{r view-un_roll_call_issues, include=FALSE}
 un_roll_call_issues
 ```
 
-## Analysis
 
-Firstly, I have looked at how often each country voted "Yes" on a resolution 
-in each year. In order to visualize the results, I have picked a few countries of 
-interest first,
 
-```{r country-list}
+```{r country-list, include=FALSE}
 country_list <- c("United States of America", "China", 
                   "United Kingdom of Great Britain and Northern Ireland", "Italy", "Germany")
 ```
 
-and focus my analysis on them.
 
-```{r plot-yearly-yes, fig.width=10, warning=FALSE}
+```{r plot-yearly-yes, echo=FALSE, fig.width=10, message=FALSE, warning=FALSE}
 un_votes %>%
   filter(country %in% country_list) %>%
   inner_join(un_roll_calls, by = "rcid") %>%
@@ -89,15 +75,11 @@ un_votes %>%
       x = "Year",
       color = "Country"
     )+
-  theme_bw()
+  theme_economist() + 
+  scale_color_economist()
 ```
 
-Next, I have created a visualization that displays 
-how the voting record of the United States changed over time on a variety of 
-issues, and compares it to another country. The other country I have chosen is 
-Italy.
-
-```{r plot-yearly-yes-issue, fig.width=10, warning=FALSE}
+```{r plot-yearly-yes-issue, echo=FALSE, fig.width=10, message=FALSE, warning=FALSE}
 un_votes %>%
   filter(country %in% c("United States of America", "Italy")) %>%
   inner_join(un_roll_calls, by = "rcid") %>%
@@ -119,8 +101,11 @@ un_votes %>%
       x = "Year",
       color = "Country"
     )+
-  theme_bw()
+  theme_economist() + 
+  scale_color_economist()
+  
 ```
+
 
 ## References
 
@@ -132,11 +117,7 @@ Routledge Handbook of International Organization, edited by Bob Reinalda
 3. Much of the analysis has been modeled on the examples presented in the 
 [unvotes package vignette](https://cran.r-project.org/web/packages/unvotes/vignettes/unvotes.html).
 
-## Appendix {#appendix}
-
-Below is a list of countries in the dataset:
-
-```{r list-countries}
+```{r list-countries, include=FALSE}
 un_votes %>% 
   select(country) %>%
   arrange(country) %>% 
