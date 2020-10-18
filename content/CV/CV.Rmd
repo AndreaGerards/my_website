@@ -1,0 +1,9 @@
+---
+title: "CV"
+output: html_document
+---
+
+![Here is my CV]("C:\Users\andre\Google Drive\University - LBS\Teaching\Core\Data Analytics\Session 03\my_website\content\CV\Gerards Andrea - CV.pdf"){width=100% height=1200}
+
+
+
