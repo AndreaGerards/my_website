@@ -6,6 +6,6 @@ output: html_document
 
 ```{r label, echo=FALSE, out.width="50%"}
 
-knitr::include_graphics("Gerards Andrea - CV.jpg")
+knitr::include_graphics("Gerards Andrea - CV.pdf")
 
 ```
